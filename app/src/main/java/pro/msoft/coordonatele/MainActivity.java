@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     TextView showLocation;
     LocationManager locationManager;
     String latitude, longitude;
-    TextView textView1, textView2, textView3, textView4, textView5;
+    TextView textView1, textView2, textView3, textView4, textView5,textView6,textView7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         textView3 = findViewById(R.id.text_view_3);
         textView4 = findViewById(R.id.text_view_4);
         textView5 = findViewById(R.id.text_view_5);
+        textView6 = findViewById(R.id.text_view_6);
+        textView7 = findViewById(R.id.text_view_7);
 
 
         btnGetLocation.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +110,13 @@ public class MainActivity extends AppCompatActivity {
                             "<font color = '#6200EE'><b> Locality:</b><br></font>" + addresses.get(0).getLocality()
                     ));
                     textView5.setText(Html.fromHtml(
+                            "<font color = '#6200EE'><b> Sub Localitate :</b><br></font>" + addresses.get(0).getSubLocality()
+                    ));
+                    textView6.setText(Html.fromHtml(
+                            "<font color = '#6200EE'><b> Cod Postal:</b><br></font>" + addresses.get(0).getPostalCode()
+                            +", "+addresses.get(0).getFeatureName()+", ?: "+addresses.get(0).getThoroughfare()
+                    ));
+                    textView7.setText(Html.fromHtml(
                             "<font color = '#6200EE'><b> Address:</b><br></font>" + addresses.get(0).getAddressLine(0)
                     ));
                 } catch (IOException e) {
@@ -132,5 +141,7 @@ public class MainActivity extends AppCompatActivity {
         textView3.setText("");
         textView4.setText("");
         textView5.setText("");
+        textView6.setText("");
+        textView7.setText("");
     }
 }
