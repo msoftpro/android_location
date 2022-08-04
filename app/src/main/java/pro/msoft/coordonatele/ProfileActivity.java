@@ -4,40 +4,43 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if(item.getItemId() == R.id.menu_add_cta_dulap){
-            startActivity(new Intent(MainActivity.this, AddDulapActivity.class));
+        if(item.getItemId() == R.id.menu_edit_profile){
+//            startActivity(new Intent(ProfileActivity.this, AddDulapActivity.class));
         }
-        if(item.getItemId() == R.id.menu_scanare_local){
-            startActivity(new Intent(MainActivity.this, ScannerActivity.class));
+        if(item.getItemId() == R.id.menu_logout){
+            logOut();
         }
-        if(item.getItemId() == R.id.menu_profile){
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-        }
-
-
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logOut() {
+        SharedPreferences sP = getSharedPreferences("my_app", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sP.edit();
+        editor.remove("token");
+        editor.commit();
+        startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.app_menu,  menu);
+        menuInflater.inflate(R.menu.profile_menu,  menu);
         return super.onCreateOptionsMenu(menu);
     }
 }

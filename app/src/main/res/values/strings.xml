@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Coordonatele</string>
+    <string name="login_activity">Audentificare</string>
+    <string name="register">Creaza cont nou</string>
+    <string name="email">Email</string>
+    <string name="click">Creaza un cont nou</string>
+    <string name="reset">Ai uitat parola?</string>
 </resources>
