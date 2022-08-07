@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.menu_add_cta_dulap){
             startActivity(new Intent(MainActivity.this, AddDulapActivity.class));
         }
+        if(item.getItemId() == R.id.menu_add_distributie){
+            startActivity(new Intent(MainActivity.this, DistributieActivity.class));
+        }
         if(item.getItemId() == R.id.menu_scanare_local){
             startActivity(new Intent(MainActivity.this, ScannerActivity.class));
         }
