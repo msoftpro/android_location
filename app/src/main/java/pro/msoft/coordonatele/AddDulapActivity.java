@@ -35,7 +35,7 @@ public class AddDulapActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private static final int REQUEST_LOCATION = 1;
 
-    String[] tip = {"CTA", "POP", "SWITCH" };
+    String[] tip = {"CTA", "POP", "SWITCH", "DULAP" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,12 @@ public class AddDulapActivity extends AppCompatActivity {
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item, tip);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectTip.setAdapter(aa);
+
+//            @Override
+//        public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+//            Toast.makeText(getApplicationContext(), tip[position] , Toast.LENGTH_LONG).show();
+//        }
+
 
         btnScanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,14 +84,7 @@ public class AddDulapActivity extends AppCompatActivity {
         });
 
     }
-//    @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        Toast.makeText(getApplicationContext(), tip[position] , Toast.LENGTH_LONG).show();
-    }
-//    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
-    }
+
 
     private void OnGPS() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);

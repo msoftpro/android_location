@@ -39,6 +39,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -84,6 +85,17 @@ public class ScannerActivity extends AppCompatActivity implements OnMapReadyCall
 
 
 
+
+//        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+//            @Override
+//            public boolean onMarkerClick(Marker marker) {
+//
+//                Toast.makeText(ScannerActivity.this, "Marker position "+marker.getPosition().latitude, Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
+
+
         btnGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +108,14 @@ public class ScannerActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
     }
+
+    public void onMarkerDrag(Marker marker) {
+        LatLng position=marker.getPosition();
+        Log.d(getClass().getSimpleName(),
+                String.format("Dragging to %f:%f", position.latitude,
+                        position.longitude));
+    }
+
     private void onGPS() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
@@ -137,31 +157,12 @@ public class ScannerActivity extends AppCompatActivity implements OnMapReadyCall
         mView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
-                Log.d(TAG, "onMapReady: ");
-                Toast.makeText(ScannerActivity.this, "googleMap.getMapType()", Toast.LENGTH_SHORT).show();
                 try {
-                    try {
-                        sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     Geocoder geocoder = new Geocoder(ScannerActivity.this, Locale.getDefault());
 
-                    try {
-                        sleep(500);
-                        Toast.makeText(ScannerActivity.this, geocoder.toString(), Toast.LENGTH_SHORT).show();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     List<Address> addresses = geocoder.getFromLocation(
                             location.getLatitude(), location.getLongitude(), 1);
 
-                    try {
-                        sleep(500);
-                        Toast.makeText(ScannerActivity.this, addresses.get(0).getLocality(), Toast.LENGTH_SHORT).show();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     MapsInitializer.initialize(getBaseContext());
                     googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                     googleMap.addMarker(new MarkerOptions()
@@ -182,6 +183,8 @@ public class ScannerActivity extends AppCompatActivity implements OnMapReadyCall
         });
     }
 
+
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
@@ -193,6 +196,7 @@ public class ScannerActivity extends AppCompatActivity implements OnMapReadyCall
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(liberty));
 
     }
+
 
 
 }

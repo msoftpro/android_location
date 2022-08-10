@@ -14,10 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Coordonatele">
         <activity
+            android:name=".CautareAbonatActivity"
+            android:exported="true"
+            android:theme="@style/My_Theme" />
+        <activity
+            android:name=".AddAbonatActivity"
+            android:exported="true"
+            android:theme="@style/My_Theme" />
+        <activity
             android:name=".DistributieActivity"
             android:exported="true"
-            android:theme="@style/My_Theme"
-            />
+            android:theme="@style/My_Theme" />
         <activity
             android:name=".ProfileActivity"
             android:exported="true"
@@ -59,6 +66,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
+<!--        AIzaSyBsVAPEBZhHjax591MSBgPde4zN2QONlhE-->
 
         <uses-library
             android:name="org.apache.http.legacy"

@@ -21,8 +21,9 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId() == R.id.menu_edit_profile){
-//            startActivity(new Intent(ProfileActivity.this, AddDulapActivity.class));
+
         }
+
         if(item.getItemId() == R.id.menu_logout){
             logOut();
         }

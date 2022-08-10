@@ -26,9 +26,9 @@ public class DistributieActivity extends AppCompatActivity implements OnMapReady
         mapFragment.getMapAsync(this);
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(DistributieActivity.this, "Sa incarcat", Toast.LENGTH_SHORT).show();
 
         MapsInitializer.initialize(getBaseContext());
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
